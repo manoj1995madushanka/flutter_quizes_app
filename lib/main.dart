@@ -17,9 +17,15 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
-  var _questions = [
-    'what\'s your favourite color?',
-    'what\'s your favourite animal?'
+  final _questions = [
+    {
+      'questionText': 'what\'s your favourite color?',
+      'answers': ['Red', 'Blue', 'Green']
+    },
+    {
+      'questionText': 'what\'s your favourite animal?',
+      'answers': ['Cat', 'Dog', 'Rabbit']
+    }
   ];
 
   void _answerQuestion() {
@@ -39,7 +45,7 @@ class MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(_questions[_questionIndex]),
-            Answer(_answerQuestion),// pasing function as pointer
+            Answer(_answerQuestion), // pasing function as pointer
             Answer(_answerQuestion),
             Answer(_answerQuestion),
           ],
