@@ -6,9 +6,17 @@ class Person{
     String? name; // optional variable
     int age;
 
-    Person({String name,int age}){// named arguments
+    Person({@required String name,int age=20}){// named arguments
+    // here 20 is default value
+    // @required noted that is mandatory
+    // @required not built in dart it is flutter feature
         this.name=name;
         this.age=age;
     }
 }
+
+every widget is a dart object
+
+statefull widget got re render when internal change happens and also from external changes
+stateless wwidget got re render only from external change
 
