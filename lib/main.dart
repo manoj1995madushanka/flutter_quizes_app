@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_new/question.dart';
+import 'package:quiz_app_new/answer.dart';
 
 void main() {
   runApp(MyApp());
@@ -38,24 +39,9 @@ class MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(_questions[_questionIndex]),
-            ElevatedButton(
-              child: Text("Answer 1"),
-              onPressed: _answerQuestion,
-              // here only added method name this will pointer to actual method note the method return value
-            ),
-            ElevatedButton(
-              onPressed: () => {
-                _answerQuestion()
-              },
-              child: Text("Answer 2"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                _answerQuestion;
-                print("answer 3 chosen");
-              },
-              child: Text("Answer 3"),
-            ),
+            Answer(_answerQuestion),// pasing function as pointer
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
           ],
         ),
       ),
