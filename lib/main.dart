@@ -44,10 +44,13 @@ class MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Question(_questions[_questionIndex]),
-            Answer(_answerQuestion), // pasing function as pointer
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
+            Question(_questions[_questionIndex]['questionText'].toString()),
+            // below ... will convert list of widget to individual list items
+            ...(_questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              return Answer(
+                  _answerQuestion, answer); // pasing function as pointer
+            }).toList(),
           ],
         ),
       ),
