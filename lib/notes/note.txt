@@ -1,0 +1,14 @@
+dart online coding tool : https://dartpad.dev/?
+
+every flutter app is a bunch of widgets
+
+class Person{
+    String? name; // optional variable
+    int age;
+
+    Person({String name,int age}){// named arguments
+        this.name=name;
+        this.age=age;
+    }
+}
+
