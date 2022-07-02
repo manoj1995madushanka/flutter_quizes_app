@@ -4,9 +4,15 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
 
+// here State<MyApp> says this state belongs to MyApp class
+class MyAppState extends State<MyApp> {
   var questionIndex = 0;
 
   var questions = [
