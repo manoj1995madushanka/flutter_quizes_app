@@ -13,16 +13,18 @@ class MyApp extends StatefulWidget {
 
 // here State<MyApp> says this state belongs to MyApp class
 class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+  var _questionIndex = 0;
 
-  var questions = [
+  var _questions = [
     'what\'s your favourite color?',
     'what\'s your favourite animal?'
   ];
 
-  void answerQuestion() {
-    questionIndex += 1;
-    print(questionIndex);
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex += 1;
+    });
+    print(_questionIndex);
   }
 
   @override
@@ -34,18 +36,21 @@ class MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Text(questions[questionIndex]),
+            Text(_questions[_questionIndex]),
             ElevatedButton(
               child: Text("Answer 1"),
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
               // here only added method name this will pointer to actual method note the method return value
             ),
             ElevatedButton(
-              onPressed: () => {print("answer 2 chosen")},
+              onPressed: () => {
+                _answerQuestion()
+              },
               child: Text("Answer 2"),
             ),
             ElevatedButton(
               onPressed: () {
+                _answerQuestion;
                 print("answer 3 chosen");
               },
               child: Text("Answer 3"),
