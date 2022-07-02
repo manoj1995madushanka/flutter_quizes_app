@@ -22,3 +22,7 @@ stateless wwidget got re render only from external change
 
 
 flutter does not redraw entire screen pixel when the app state changes it has very advance mechanism for identify what are need to re draw of widget tree
+
+final is used for runtime constants values, when we use final value not be assigned mandatory when creating property.
+ex: questionText of question class
+const is used for runtime and compile time constants. eg: questions list
