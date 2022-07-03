@@ -18,19 +18,30 @@ class MyApp extends StatefulWidget {
 // here State<MyApp> says this state belongs to MyApp class
 class MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  var _totalScore = 0;
 
   static const _questions = [
     {
       'questionText': 'what\'s your favourite color?',
-      'answers': ['Red', 'Blue', 'Green']
+      'answers': [
+        {'text': 'Red', 'score': 5},
+        {'text': 'Blue', 'score': 2},
+        {'text': 'Green', 'score': 3}
+      ]
     },
     {
       'questionText': 'what\'s your favourite animal?',
-      'answers': ['Cat', 'Dog', 'Rabbit']
+      'answers': [
+        {'text': 'Cat', 'score': 4},
+        {'text': 'Dog', 'score': 3},
+        {'text': 'Rabbit', 'score': 3}
+      ]
     }
   ];
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    this._totalScore += score;
+
     setState(() {
       _questionIndex += 1;
     });
@@ -56,7 +67,7 @@ class MyAppState extends State<MyApp> {
                 questions: _questions,
                 questionIndex: _questionIndex,
                 answerQuestion: _answerQuestion)
-            : const Result(),
+            : Result(_totalScore),
       ),
     );
   }
