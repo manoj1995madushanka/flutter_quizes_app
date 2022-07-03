@@ -4,8 +4,9 @@ import 'package:quiz_app_new/answer.dart';
 
 class Result extends StatelessWidget {
   final int resultScore;
+  final VoidCallback resetHandler;
 
-  const Result(this.resultScore);
+  const Result(this.resultScore, this.resetHandler);
 
   /*
   * this is not a method
@@ -26,10 +27,18 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        resultPhrase,
-        style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-        textAlign: TextAlign.center,
+      child: Column(
+        children: [
+          Text(
+            resultPhrase,
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          TextButton(
+            onPressed: resetHandler,
+            child: Text("Restart Quiz"),
+          ),
+        ],
       ),
     );
   }
