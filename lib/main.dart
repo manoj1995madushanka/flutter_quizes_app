@@ -32,6 +32,13 @@ class MyAppState extends State<MyApp> {
     setState(() {
       _questionIndex += 1;
     });
+
+    if (_questionIndex < _questions.length) {
+      print("we have more questions");
+    } else {
+      print("no more questions");
+    }
+
     print(_questionIndex);
   }
 
@@ -42,17 +49,22 @@ class MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text("AppBar"),
         ),
-        body: Column(
-          children: [
-            Question(_questions[_questionIndex]['questionText'].toString()),
-            // below ... will convert list of widget to individual list items
-            ...(_questions[_questionIndex]['answers'] as List<String>)
-                .map((answer) {
-              return Answer(
-                  _answerQuestion, answer); // pasing function as pointer
-            }).toList(),
-          ],
-        ),
+        body: _questionIndex < _questions.length
+            ? Column(
+                children: [
+                  Question(
+                      _questions[_questionIndex]['questionText'].toString()),
+                  // below ... will convert list of widget to individual list items
+                  ...(_questions[_questionIndex]['answers'] as List<String>)
+                      .map((answer) {
+                    return Answer(
+                        _answerQuestion, answer); // pasing function as pointer
+                  }).toList(),
+                ],
+              )
+            : const Center(
+                child: Text("You did it."),
+              ),
       ),
     );
   }
