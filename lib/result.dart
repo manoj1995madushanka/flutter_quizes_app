@@ -7,12 +7,29 @@ class Result extends StatelessWidget {
 
   const Result(this.resultScore);
 
+  /*
+  * this is not a method
+  * dart inbuilt feature for generate dynamic value
+  * */
+  String get resultPhrase {
+    var resultText = "you did it";
+    if (resultScore > 5) {
+      resultText = "Good";
+    } else if (resultScore > 7) {
+      resultText = "brillient";
+    } else {
+      resultText = "bad";
+    }
+    return resultText;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Text(
-        "You did it.",
+        resultPhrase,
         style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+        textAlign: TextAlign.center,
       ),
     );
   }
