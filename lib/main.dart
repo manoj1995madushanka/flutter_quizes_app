@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_new/question.dart';
 import 'package:quiz_app_new/answer.dart';
+import 'package:quiz_app_new/quiz.dart';
+import 'package:quiz_app_new/result.dart';
 
 void main() {
   runApp(MyApp());
@@ -50,21 +52,11 @@ class MyAppState extends State<MyApp> {
           title: const Text("AppBar"),
         ),
         body: _questionIndex < _questions.length
-            ? Column(
-                children: [
-                  Question(
-                      _questions[_questionIndex]['questionText'].toString()),
-                  // below ... will convert list of widget to individual list items
-                  ...(_questions[_questionIndex]['answers'] as List<String>)
-                      .map((answer) {
-                    return Answer(
-                        _answerQuestion, answer); // pasing function as pointer
-                  }).toList(),
-                ],
-              )
-            : const Center(
-                child: Text("You did it."),
-              ),
+            ? Quiz(
+                questions: _questions,
+                questionIndex: _questionIndex,
+                answerQuestion: _answerQuestion)
+            : const Result(),
       ),
     );
   }
